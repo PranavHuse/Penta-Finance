@@ -1,7 +1,7 @@
 .env
 node_modules
 dist
-data
+
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/node

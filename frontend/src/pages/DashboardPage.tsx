@@ -1,14 +1,23 @@
-import { Wallet, Lock, ArrowDownCircle, PiggyBank } from "lucide-react";
+import { useState } from "react";
+import { Wallet, Lock, ArrowDownCircle, PiggyBank, AlertCircle } from "lucide-react";
 import { useDashboardData } from "@/hooks/useDashboardData";
 import { useRecentTransactions } from "@/hooks/useRecentTransactions";
 import { KpiCard } from "@/components/dashboard/KpiCard";
 import { TrendChart } from "@/components/dashboard/TrendChart";
 import { RecentTransactions } from "@/components/dashboard/RecentTransactions";
+import { DashboardTransactionsPreview } from "@/components/dashboard/DashboardTransactionsPreview";
 import { Skeleton } from "@/components/ui/skeleton";
-import { AlertCircle } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function DashboardPage() {
-  const { summary, trend, isLoading, error } = useDashboardData("monthly");
+  const [granularity, setGranularity] = useState<"monthly" | "weekly">("monthly");
+  const { summary, trend, isLoading, error } = useDashboardData(granularity);
   const { transactions, isLoading: txLoading } = useRecentTransactions(3);
 
   if (error) {
@@ -39,15 +48,29 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div className="lg:col-span-2 bg-card border border-border rounded-2xl p-5">
-          <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center justify-between mb-2 flex-wrap gap-3">
             <h2 className="font-semibold text-foreground">Overview</h2>
-            <div className="flex items-center gap-4 text-xs text-muted-foreground">
-              <span className="flex items-center gap-1.5">
-                <span className="h-2 w-2 rounded-full bg-primary" /> Income
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="h-2 w-2 rounded-full bg-warning" /> Expenses
-              </span>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                <span className="flex items-center gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-primary" /> Income
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-warning" /> Expenses
+                </span>
+              </div>
+              <Select
+                value={granularity}
+                onValueChange={(v) => setGranularity(v as "monthly" | "weekly")}
+              >
+                <SelectTrigger className="w-28 h-8 text-xs bg-secondary border-border">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="monthly">Monthly</SelectItem>
+                  <SelectItem value="weekly">Weekly</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
           {isLoading || !trend ? (
@@ -63,6 +86,8 @@ export default function DashboardPage() {
           <RecentTransactions transactions={transactions} />
         )}
       </div>
+
+      <DashboardTransactionsPreview />
     </div>
   );
 }

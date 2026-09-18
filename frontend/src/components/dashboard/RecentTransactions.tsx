@@ -1,13 +1,15 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import type { Transaction } from "@/types";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 export function RecentTransactions({ transactions }: { transactions: Transaction[] }) {
+   const navigate = useNavigate();
   return (
     <div className="bg-card border border-border rounded-2xl p-5 h-full">
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-semibold text-foreground">Recent Transaction</h2>
-        <button className="text-sm text-primary hover:underline">See all</button>
+        <button  onClick={() => navigate("/transactions")} className="text-sm text-primary hover:underline">See all</button>
       </div>
 
       <div className="space-y-4">

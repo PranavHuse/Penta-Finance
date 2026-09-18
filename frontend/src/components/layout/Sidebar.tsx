@@ -17,9 +17,9 @@ export function Sidebar() {
     <aside className="hidden md:flex w-60 shrink-0 flex-col bg-sidebar border-r border-sidebar-border px-4 py-6">
       <div className="flex items-center gap-2 px-2 mb-8">
         <div className="h-7 w-7 rounded-md bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
-          L
+          P
         </div>
-        <span className="text-lg font-semibold">Loopr</span>
+        <span className="text-lg font-semibold">Penta</span>
       </div>
 
       <nav className="flex flex-col gap-1">
