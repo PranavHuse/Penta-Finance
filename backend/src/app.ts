@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
 import dashboardRoutes from "./routes/dashboardRoutes";
-
+import transactionRoutes from "./routes/transactionRoutes";
+import reportRoutes from "./routes/reportRoutes";
 
 const app = express();
 
@@ -21,7 +22,11 @@ import { notFoundHandler, errorHandler } from "./middleware/errorHandler";
 app.use("/api/auth", authRoutes);
 // ...alongside the auth routes
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/transactions", transactionRoutes);
+app.use("/api/reports", reportRoutes);
 // ...at the very end, after all routes:
+
+
 app.use(notFoundHandler);
 app.use(errorHandler);
 

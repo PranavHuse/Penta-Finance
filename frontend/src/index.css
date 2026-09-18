@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #0f1115;
+    --foreground: #f5f6f7;
+    --card: #1b1e25;
+    --card-foreground: #f5f6f7;
+    --popover: #1b1e25;
+    --popover-foreground: #f5f6f7;
+    --primary: #3dd598;
+    --primary-foreground: #0f1115;
+    --secondary: #22262f;
+    --secondary-foreground: #f5f6f7;
+    --muted: #22262f;
+    --muted-foreground: #9ca3af;
+    --accent: #22262f;
+    --accent-foreground: #f5f6f7;
+    --destructive: #f76e6e;
+    --border: #2a2e37;
+    --input: #2a2e37;
+    --ring: #3dd598;
+    --warning: #f0b429;
+    --warning-foreground: #0f1115;
+    --radius: 1rem;
+
+    --sidebar: #0b0d11;
+    --sidebar-foreground: #f5f6f7;
+    --sidebar-primary: #3dd598;
+    --sidebar-primary-foreground: #0f1115;
+    --sidebar-accent: #22262f;
+    --sidebar-accent-foreground: #f5f6f7;
+    --sidebar-border: #2a2e37;
+    --sidebar-ring: #3dd598;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary rounded-full;
+}
