@@ -1,4 +1,4 @@
-# Pento — Financial Analytics Dashboard
+# Penta — Financial Analytics Dashboard
 
 Full-stack assignment: React/TS frontend + Node/TS backend + MongoDB, JWT auth, charts, filterable/sortable transaction table, configurable CSV export.
 
@@ -35,3 +35,9 @@ Log in with any of the seeded demo accounts — see `backend/README.md`.
 - CSV export streams the full matching result set (not paginated) — PRD open question #4 resolved in favor of full export.
 - Weekly trend granularity works but produces dense charts given the seed data's 1-year span — expected, not a bug.
 - No refresh-token rotation — JWT is a single access token with a configurable expiry (`JWT_EXPIRES_IN`); acceptable for assignment scope per PRD non-goals.
+
+## Demo
+
+[![Loopr demo video](https://drive.google.com/file/d/1zRhh4b0Cg6iBw37t6_jT953Czz3XhAhr/view?usp=sharing)](https://drive.google.com/file/d/1zRhh4b0Cg6iBw37t6_jT953Czz3XhAhr/view?usp=sharing)
+
+*Click to watch — walkthrough of login, dashboard, filtering/sorting, and CSV export.*
